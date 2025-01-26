@@ -22,6 +22,19 @@ function alterarValorInput(texto){
     campoInput.value = texto;
 }
 
+//Função para inserir os nomes da lista de amigos, como elementos li, em um elemento ul: 
+function atualizarListaDeAmigos(){  
+    let ulHtml = document.getElementById('listaAmigos');
+    ulHtml.innerHTML = '';
+
+    listaDeAmigos.forEach(amigo =>{
+        let itemLi = document.createElement('li');
+        itemLi.textContent = amigo;
+        ulHtml.appendChild(itemLi);
+    })
+}
+
+
 
 
 
