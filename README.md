@@ -30,4 +30,12 @@ O foco foi trabalhar a **lógica de programação** utilizando JavaScript, integ
    - Implementamos uma função que é ativada ao clicar em um botão para adicionar um nome à lista.
 
 3. **Realização do sorteio** 🎲
-   - Criamos uma função que sorteia aleatoriamente um amigo da lista de participantes.
+   - Criamos uma função que sorteia aleatoriamente um amigo da lista de participantes, além de eliminar duplicidade no sorteio.
+
+4. **Exigências da página**
+   - Implantamos verificações nas entradas do usuário, onde o campo do nome não pode ser vazio e nomes iguais não podem ser incluídos na lista dfe amigos.
+
+
+
+### Acesse a página do jogo aqui:
+https://nishi-kun.github.io/Challenge-Amigo-Secreto/ 👀
