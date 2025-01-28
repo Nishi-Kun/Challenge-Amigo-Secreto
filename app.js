@@ -3,16 +3,24 @@
 //Lista de nomes:
 let listaDeAmigos = [];
 
+//lista de nomes sorteados:
+let listaDeNomesSorteados = [];
+
 //Função para adicionar nomes na lista e validar a entrada do usuário:
 function adicionarAmigo(){
     let nomeAmigo = document.getElementById('amigo').value;
     if(nomeAmigo == ''){
-        alert('O nome do amigo deve ser preenchido.')
+        alert('O nome do amigo deve ser preenchido.');
     }else{
-        listaDeAmigos.push(nomeAmigo);
-        alterarValorInput('');
-        atualizarListaDeAmigos();
-        console.log(listaDeAmigos);
+        if(listaDeAmigos.includes(nomeAmigo)){
+            alert('Este amigo já está na lista, insira outro nome.');
+
+        }else{
+            listaDeAmigos.push(nomeAmigo);
+            alterarValorInput('');
+            atualizarListaDeAmigos();
+            console.log(listaDeAmigos);
+        }
     }
 }
 
@@ -33,6 +41,35 @@ function atualizarListaDeAmigos(){
         ulHtml.appendChild(itemLi);
     })
 }
+
+//Função para sortear um amigo:
+function sortearAmigo(){
+    let indiceListaDeAmigos = gerarIndiceListaDeAmigos();
+    let ulResultado = document.getElementById('resultado');
+    if(listaDeAmigos.length === 0){
+        alert('A lista de nomes está vazia.');
+    }else{
+        ulResultado.innerHTML = listaDeAmigos[indiceListaDeAmigos];
+    }
+
+}
+
+//Função para gerar um indice da lista de amigos e adicionar a uma lista de nomes sorteados, para que não haja sorteio do mesmo nome.
+function gerarIndiceListaDeAmigos(){
+    let indiceListaDeAmigos = Math.floor(Math.random() * listaDeAmigos.length);
+
+    if(listaDeNomesSorteados.includes(indiceListaDeAmigos)){
+        return gerarIndiceListaDeAmigos();
+    }else{
+        listaDeNomesSorteados.push(indiceListaDeAmigos);
+        console.log(indiceListaDeAmigos);
+        console.log(listaDeNomesSorteados);
+        console.log(listaDeAmigos[indiceListaDeAmigos]);
+        return indiceListaDeAmigos;
+        
+    }
+}
+
 
 
 
