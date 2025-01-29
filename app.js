@@ -6,6 +6,9 @@ let listaDeAmigos = [];
 //lista de nomes sorteados:
 let listaDeNomesSorteados = [];
 
+//capturando o elemento UL na página HTML.
+let ulHtml = document.getElementById('listaAmigos');
+
 //Função para adicionar nomes na lista e validar a entrada do usuário:
 function adicionarAmigo(){
     let nomeAmigo = document.getElementById('amigo').value;
@@ -32,9 +35,7 @@ function alterarValorInput(texto){
 
 //Função para inserir os nomes da lista de amigos, como elementos li, em um elemento ul: 
 function atualizarListaDeAmigos(){  
-    let ulHtml = document.getElementById('listaAmigos');
-    ulHtml.innerHTML = '';
-
+    limparListaDaTela();
     listaDeAmigos.forEach(amigo =>{
         let itemLi = document.createElement('li');
         itemLi.textContent = amigo;
@@ -49,7 +50,8 @@ function sortearAmigo(){
     if(listaDeAmigos.length === 0){
         alert('A lista de nomes está vazia.');
     }else{
-        ulResultado.innerHTML = listaDeAmigos[indiceListaDeAmigos];
+        limparListaDaTela();
+        ulResultado.innerHTML = `O amigo secreto sorteado foi: ${listaDeAmigos[indiceListaDeAmigos]}.`;
     }
 
 }
@@ -57,7 +59,6 @@ function sortearAmigo(){
 //Função para gerar um indice da lista de amigos e adicionar a uma lista de nomes sorteados, para que não haja sorteio do mesmo nome.
 function gerarIndiceListaDeAmigos(){
     let indiceListaDeAmigos = Math.floor(Math.random() * listaDeAmigos.length);
-
     if(listaDeNomesSorteados.includes(indiceListaDeAmigos)){
         return gerarIndiceListaDeAmigos();
     }else{
@@ -68,6 +69,11 @@ function gerarIndiceListaDeAmigos(){
         return indiceListaDeAmigos;
         
     }
+}
+
+//Função para limpar o conteúdo do elemento UL que aparece na tela.
+function limparListaDaTela(){
+    ulHtml.innerHTML = '';
 }
 
 
